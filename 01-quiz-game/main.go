@@ -2,8 +2,8 @@ package main
 
 import (
 	"encoding/csv"
-	"fmt"
 	"flag"
+	"fmt"
 	"os"
 	"strings"
 	"time"
@@ -34,7 +34,7 @@ func main() {
 
 	correct := 0
 
-	problemLoop:
+problemLoop:
 	for i, p := range problems {
 		fmt.Printf("problem #%d: %s = ", i+1, p.q)
 
@@ -42,7 +42,7 @@ func main() {
 		go func() {
 			var answer string
 			fmt.Scanf("%s\n", &answer)
-			answerCh<-answer
+			answerCh <- answer
 		}()
 
 		select {
@@ -69,6 +69,7 @@ func parseLines(problems [][]string) []Problem {
 	return ret
 }
 
+// Problem type
 type Problem struct {
 	q string
 	a string
